@@ -1,0 +1,65 @@
+import random
+from tkinter import *
+from tkinter import ttk
+
+def generator():
+    if c1.get() == 1:
+        l = 'ABCDEFGHIGKLMNOPQRSTUVYXWZ'
+    if c2.get() == 1:
+        l= '0123456789'
+    if c3.get() == 1:
+        l = '<>=-_!@#$%'
+    if c1.get() == 1 and c2.get() == 1:
+        l = 'ABCDEFGHIGKLMNOPQRSTUVYXWZ0123456789'
+    if c1.get() == 1 and c3.get() == 1:
+        l = 'ABCDEFGHIGKLMNOPQRSTUVYXWZ<>=-_!@#$%'
+    if c2.get() == 1 and c3.get() == 1:
+        l = '0123456789<>=-_!@#$%'
+    if c1.get() == 1 and c2.get() == 1 and c3.get() == 1:
+        l = 'ABCDEFGHIGKLMNOPQRSTUVYXWZ0123456789<>=-_!@#$%'
+    
+    for i in range(a):
+        pas = random.choice(list(l))
+
+               
+    Artem.delete(0,END)
+    Artem.insert(END,pas)
+
+
+window = Tk()
+
+
+window.title('Генератор паролей')
+
+window.geometry('300x200')
+
+window.resizable(width=False, height=False)
+
+
+btn = Button(window, text = 'Generation', command = generator,bg = 'grey')
+btn.place(relx=0.5, y=175, anchor=CENTER)
+
+c3 = IntVar()
+c3_checkbutton = ttk.Checkbutton(window,text='Символы',variable=c3)
+c3_checkbutton.grid(row=0, column=18)
+
+c1 = IntVar()
+c1_checkbutton = ttk.Checkbutton(window,text='A-Z',variable=c1)
+c1_checkbutton.grid(row=0, column=19)
+
+c2 = IntVar()
+c2_checkbutton = ttk.Checkbutton(window, text='Цифры',variable=c2)
+c2_checkbutton.grid(row=0, column=20)
+
+Artem = Entry(window)
+Artem.place(relx = 0.3, y = 100)
+
+v = DoubleVar()
+c4 = Scale(window, from_ = 8, to = 30,length=200, orient = HORIZONTAL,variable = v)
+c4.place(relx=0.65,y = 25, anchor= NE)
+a = int(v.get())
+
+label = ttk.Label()
+label.place(anchor=NW)
+
+window.mainloop() 
