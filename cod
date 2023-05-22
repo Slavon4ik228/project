@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk
 
 def generator():
-    a = int(v.get())  # Обновление значения переменной 'a'
+    a = int(v.get())
     
     if c1.get() == 1:
         l = 'ABCDEFGHIGKLMNOPQRSTUVYXWZ'
